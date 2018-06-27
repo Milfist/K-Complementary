@@ -29,12 +29,12 @@ public class ExerciseTest {
     @Test
     public void test_algorithm_sorted_array() {
         StringBuffer sb = Exercise.kComplementarySorted(ARRAY3, K_);
-        System.out.println(sb);
+//        System.out.println(sb);
     }
 
     @Test
     public void test_algorithm_super_sort_array() {
-        StringBuffer sb = Exercise.kComplementarySorted2(ARRAY3, K_);
+        int sb = Exercise.noOfComplementaryPairs(ARRAY3, K_);
         System.out.println(sb);
     }
 }
