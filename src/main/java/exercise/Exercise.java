@@ -7,40 +7,19 @@ import java.util.Map;
 public class Exercise {
 
     /**
-     * Recorremos el array con un bucle anidado para ir emparejando los valores que cumplen la condición, su suma debe
-     * ser igual a k.
-     * La notación Big-O del algoritmo es O(n ) debido al primer buble, con el que recorro la lista hasta el final.
-     * La ordenación del array es O(nlogn).
-     * En el bucle anidado, cortamos la ejecución si el valor de la suma es menor que K, de esta manera evitamos O(n^2).
-     * El resto es O(n)
-     *
-     * @param arr Data array
-     * @param k   Reference number
+     * El algoritmo tiene una complegidad lineal O(n). Realiza n operaciones en el bucle para crear el Map, n operaciones
+     * recorriendo nuevamente el array para buscar en el map las correspondencias y la suma final. Si no me confundo,
+     * O(3n) -> O(n)
+     * Devolverá el número de pares "duplicados" ya que siendo K = 5 y la lista [1, 4] las parejas son 1-4 y 4-1.
+     * @param arr
+     * @param k
      * @return
      */
-    public static StringBuffer kComplementarySorted(int arr[], int k) {
-
-        int n = arr.length;
-
-        int result = 0;
-        StringBuffer sb = new StringBuffer();
-
-        Arrays.sort(arr);
-
-        for (int i = 0; i < n; i++) {
-            if (arr[i] > k) {
-                for (int j = n - 1; j > i; j--) {
-                    if (arr[i] + arr[j] == k) {
-                        sb.append("[" + arr[i] + " - " + arr[j] + "], ");
-                        result++;
-                    } else if (arr[i] + arr[j] < k || arr[j] > k) {
-                        break;
-                    }
-                }
-            }
+    public static int complementaryKPairs(int arr[], int k) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < arr.length; i++) {
+            map.merge(k - arr[i], 1, Integer::sum);
         }
-        System.out.println(result);
-
-        return sb;
+        return Arrays.stream(arr).map(element -> map.getOrDefault(element, 0)).sum();
     }
 }
