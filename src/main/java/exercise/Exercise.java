@@ -7,7 +7,7 @@ import java.util.Map;
 public class Exercise {
 
     /**
-     * El algoritmo tiene una complegidad lineal O(n). Realiza n operaciones en el bucle para crear el Map, n operaciones
+     * El algoritmo tiene una complejidad lineal O(n). Realiza n operaciones en el bucle para crear el Map, n operaciones
      * recorriendo nuevamente el array para buscar en el map las correspondencias y la suma final. Si no me confundo,
      * O(3n) -> O(n)
      * Devolverá el número de pares "duplicados" ya que siendo K = 5 y la lista [1, 4] las parejas son 1-4 y 4-1.
